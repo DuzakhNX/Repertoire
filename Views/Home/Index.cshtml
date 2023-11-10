@@ -1,0 +1,95 @@
+﻿@model MyApp.Models.Genre_CamionViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bienvenue Mr Mossi BOULKASSOUM ! Nous vous souhaitons un bon travail ;)</h1>
+
+<p>
+    <a asp-action="Create">Ajouter un Chauffeur</a>
+</p>
+
+<form asp-controller="Home" asp-action="Index" method="get">
+    <p>
+        <select asp-for="GenreCamion" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Numero_Camion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Tel_Togo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Tel_Benin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Tel_Niger)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Genre_Camion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Proprietaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chauffeurs![0].Numero_Proprietaire)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Chauffeurs!) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_Camion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel_Togo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel_Benin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel_Niger)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre_Camion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proprietaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_Proprietaire)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
